@@ -16,10 +16,4 @@ This project requires:
 
 After installing the required tools open the directory in command line and execute `npm install`. Use `yarn install` in the client directory.
 
-Each application within this project needs to be started separately. Follow the directions below for each portion of the project.
-### Client
-Check the [Client README](/client/README.md) for instructions on starting that.
-### Worker
-Make sure your redis server is running. Then run `node worker/index.js` in your cli.
-### API
-Run `node api/index.js` to start the express app.
+Each application within this project needs to be started separately. For the Client run `yarn start` in [client directory](/client), for the Worker run `node worker/index.js`, and for the API run `node api/index.js`.
