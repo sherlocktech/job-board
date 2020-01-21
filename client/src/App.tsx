@@ -3,9 +3,11 @@ import './App.css';
 
 import Jobs from './Jobs';
 
+import { IJob } from './model/IJob';
+
 const JOB_API_URL = 'http://localhost:3001/jobs';
 
-async function fetchJobs(updateCb) {
+async function fetchJobs(updateCb: Function) {
   const res = await fetch(JOB_API_URL);
   const json = await res.json();
 
@@ -22,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Jobs jobs={jobList} />
+      <Jobs jobs={ jobList } />
     </div>
   );
 }

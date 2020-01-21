@@ -9,6 +9,8 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import Job from './Job';
 import JobModal from './JobModal';
 
+import { IJob } from './model/IJob';
+
 const useStyles = makeStyles({
     root: {
       maxWidth: 400,
@@ -16,7 +18,9 @@ const useStyles = makeStyles({
     },
   });
 
-export default function Jobs({jobs}) {
+interface IProps { jobs: Array<IJob> }
+
+export default function Jobs(props: IProps) {
     // modal
     const [open, setOpen] = React.useState(false);
     const [selectedJob, selectJob] = React.useState({});
@@ -28,10 +32,10 @@ export default function Jobs({jobs}) {
     };
 
     // pagination
-    const numJobs = jobs.length;
+    const numJobs = props.jobs.length;
     const numPages = Math.ceil(numJobs / 50);
     const [activeStep, setActiveStep] = React.useState(0);
-    const jobsOnPage = jobs.slice(activeStep * 50, (activeStep * 50) + 50);
+    const jobsOnPage = props.jobs.slice(activeStep * 50, (activeStep * 50) + 50);
 
     const handleNext = () => {
         setActiveStep(prevActiveStep => prevActiveStep + 1);
@@ -44,11 +48,11 @@ export default function Jobs({jobs}) {
     const classes = useStyles();
     const theme = useTheme();
 
-    console.log(`job is`, jobs[0]);
+    console.log(`job is`, props.jobs[0]);
 
     return (
         <div className='jobs'>
-            <JobModal open={open} job={selectedJob} handleClose={handleClose} />
+            <JobModal open={open} job={selectedJob as IJob} handleClose={handleClose} />
             <Typography variant="h4" component="h1">
                 Entry-level Software Jobs
             </Typography>
