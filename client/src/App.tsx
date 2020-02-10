@@ -3,8 +3,6 @@ import './App.css';
 
 import Jobs from './Jobs';
 
-import { IJob } from './model/IJob';
-
 const JOB_API_URL = 'http://localhost:3001/jobs';
 
 async function fetchJobs(updateCb: Function) {
